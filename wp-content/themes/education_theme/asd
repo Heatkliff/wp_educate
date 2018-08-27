@@ -1,0 +1,73 @@
+.header
+  margin: 4.25em auto
+  margin-top: 0
+  text-transform: uppercase
+  color: #626262
+
+  .logo
+    //float: left
+    position: relative
+    padding-left: 3%
+    top: 2.8em
+    right: 31%
+    color: #626262
+    font-size: 2em
+    font-family: Inconsolata, serif
+  div
+    ul
+      text-align: right
+      margin-right: 15%
+      &.menu
+        > li
+          margin-left: 80px
+          &:first-child
+            margin-left: 0
+      li
+        padding: 3em
+        padding-bottom: 2.1em
+        display: inline-block
+        text-align: right
+        position: relative
+        padding: 0
+
+        ul
+          //position: relative
+          //left: -20%
+          all: initial
+          width: 12em
+          left: 0
+          li *
+            all: initial
+            text-align: left
+            color: #626262
+            font-family: PlayfairDisplay, serif
+            min-width: 170px
+            float: none
+            display: flex
+            position: relative
+
+        .sub-menu
+          background-color: #ffffff
+          margin-left: -70%
+          padding: 1.3em
+          z-index: 10000
+          display: none
+          position: absolute
+          float: left
+          border-radius: 5%
+
+          li
+            padding: 15px 0 15px 0
+
+
+
+        &:hover > ul
+          //transition-property: all
+          //transition-duration: 4s
+          display: inherit
+
+        //.sub-menu li
+
+
+  .hide-element
+    display: none

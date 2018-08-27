@@ -1,0 +1,48 @@
+/*import variables */
+@import "variables";
+
+/*import mixins */
+@import "mixins";
+
+/*import fonts */
+@import "fonts";
+
+/* style for header */
+@import "header";
+
+/*style for content */
+@import "content";
+
+/*style for footer */
+@import "footer";
+
+/*style for form */
+@import "form-home";
+
+/*style for page */
+@import "page";
+
+/*style for output random post */
+@import "randomPost";
+
+/*style for block comments */
+@import "comments";
+
+/*style for page with sidebar */
+@import "pageSidebar";
+
+/*topic responsiveness */
+@import "responce";
+
+body {
+  font-family: PlayfairDisplay, serif;
+}
+
+.banner {
+  img {
+    width: 1128px;
+    height: auto;
+    margin: 131px auto;
+    margin-top: 0;
+  }
+}

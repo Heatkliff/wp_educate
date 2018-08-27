@@ -1,0 +1,37 @@
+.random-posts {
+  padding-top: 40px;
+  background-color: #f0f0f0;
+  margin-top: 121px;
+  margin-bottom: 38px;
+  padding-bottom: 48px;
+  .posts {
+    margin: auto;
+    max-width: 960px;
+    .label-rand {
+      text-align: left;
+      text-transform: uppercase;
+      color: #c6c6c6;
+      margin-bottom: 32px;
+    }
+    .random-post {
+      font-size: 1.25em;
+      color: #626262;
+      margin-right: 20px;
+      width: 232px;
+      display: inline-block;
+      text-align: left;
+      img {
+        width: 100%;
+        height: 176px;
+        padding-bottom: 12px;
+      }
+    }
+    .label {
+      padding-top: 52px;
+      font-size: 2em;
+    }
+  }
+  .posts:nth-child(3) {
+    width: 1111px;
+  }
+}
