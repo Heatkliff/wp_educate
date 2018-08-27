@@ -14,10 +14,10 @@
   .logo {
     position: relative;
     padding-left: 3%;
-    top: 22px;
+    top: 45px;
     right: 31%;
     color: #626262;
-    font-size: 2em;
+    font-size: 32px;
     font-family: Inconsolata, serif;
   }
   div {
@@ -28,12 +28,14 @@
         @include respond-to($large-desktop) {
           display: block !important;
         }
-
         > li {
           margin-left: 80px;
           &:first-child {
             margin-left: 0;
           }
+        }
+        ul{
+          display: none;
         }
       }
       .menu-item-has-children {
@@ -73,7 +75,7 @@
             position: relative;
           }
           &.sub-menu {
-            background-color: white;
+
             left: -100%;
             padding: 20px;
             height: 0;
@@ -82,7 +84,8 @@
             float: left;
             border-radius: 5%;
             li {
-              padding: 15px 0 15px 0;
+              background-color: white;
+              padding: 15px 0 15px 10px;
             }
             &.sub-menu-active{
               transition-property: all;

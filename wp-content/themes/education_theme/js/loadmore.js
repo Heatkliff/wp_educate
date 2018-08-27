@@ -1,6 +1,6 @@
 jQuery(function($){
     $('#true_loadmore').click(function(){
-        $(this).text('Загружаю...'); // изменяем текст кнопки, вы также можете добавить прелоадер
+        $(this).text('Loading...'); // изменяем текст кнопки, вы также можете добавить прелоадер
         var data = {
             'action': 'loadmore',
             'query': true_posts,
@@ -13,12 +13,12 @@ jQuery(function($){
             success:function(data){
 
                 if( data ) {
-                    $('#true_loadmore').text('Загрузить ещё').before(data); // вставляем новые посты
+                    $('#true_loadmore').text('Load more').before(data); // вставляем новые посты
                     current_page++; // увеличиваем номер страницы на единицу
                     if (current_page == max_pages) $("#true_loadmore").remove(); // если последняя страница, удаляем кнопку
                 } else {
-                    $('#true_loadmore').text('Не факт что загружено');
-                    // $('#true_loadmore').remove(); // если мы дошли до последней страницы постов, скроем кнопку
+                    // $('#true_loadmore').text('Не факт что загружено');
+                    $('#true_loadmore').remove(); // если мы дошли до последней страницы постов, скроем кнопку
                 }
             }
         });

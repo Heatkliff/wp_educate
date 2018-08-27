@@ -1,17 +1,17 @@
-<footer class="footer">
+<div class="footer">
     <div id="widgets-footer">
 
-        <div id="footer-links">
+        <div class="footer-links-widget">
             <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-links')) : ?>
             <?php endif; ?>
         </div>
-        <div id="footer-follow">
+        <div class="footer-follow-widget">
             <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-follow')) : ?>
             <?php endif; ?>
         </div>
     </div>
 
-</footer>
+</div>
 </body>
 
 </html>

@@ -4,7 +4,7 @@
   margin-bottom: 0;
   color: #626262;
   text-align: justify;
-  max-width: 60em;
+  max-width: 960px;
   .post {
     float: left;
     width: 65%;
@@ -23,11 +23,11 @@
       color: #b4ad9e;
       margin-top: 32px;
       margin-bottom: 22px;
-      font-size: 1em;
+      font-size: 16px;
     }
     .widget_categories h2 {
       font-family: "Ubuntu", solid;
-      font-size: 1em;
+      font-size: 16px;
       color: #b4ad9e;
       text-transform: uppercase;
     }
@@ -40,7 +40,7 @@
       color: #b4ad9e;
       a {
         color: #626262;
-        font-size: 1em;
+        font-size: 16px;
       }
     }
     li {
@@ -53,17 +53,17 @@
     }
     .widget_toppostswidget h2 {
       font-family: "Ubuntu", solid;
-      font-size: 1em;
+      font-size: 16px;
       color: #b4ad9e;
       text-transform: uppercase;
     }
     .widget_post_title {
       margin-top: 32px;
       margin-bottom: 22px;
-      font-size: 1.5em;
+      font-size: 24px;
     }
     .widget_post_content {
-      font-size: 0.8em;
+      font-size: 13px;
       margin-bottom: 32px;
     }
     .top_post_widget {
@@ -75,11 +75,11 @@
       color: #b4ad9e;
       a {
         color: #626262;
-        font-size: 1em;
+        font-size: 16px;
       }
     }
     .num_comments_widget {
-      font-size: 0.8em;
+      font-size: 13px;
       color: #b4ad9e;
       padding-bottom: 16px;
     }

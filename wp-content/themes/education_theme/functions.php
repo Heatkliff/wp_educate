@@ -6,16 +6,32 @@ function get_form_home()
 {
     $form = "
 <div class=\"form\">
-    <form>
+    <form action='/' id='subscribe-form' method='post'>
         <div class=\"label\">Sign up for our newsletter</div>
-        <input type=\"email\" placeholder=\"Enter a valid email address\">
-        <input type=\"submit\" value=\"\">
+        <input type=\"email\" class='subscribe-email' name='email' placeholder=\"Enter a valid email address\">
+        <input type='hidden' name='test_test' value='test_test'>
+        <input type=\"submit\" id='submit-subscribe' value=''>
         <hr>
     </form>
 </div>
 ";
     echo $form;
 
+
+    if( isset( $_POST['test_test']) ){
+        echo '<div id="subscribe-confirm" style="position: fixed; top: 50%;right: 0;width: 500px;height: 200px;background-color: red;">Hello!</div>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", ready);
+        function ready() {
+          setTimeout( function() {
+          document.getElementById("subscribe-confirm").style.display = "none";
+            
+          }, 3000)
+        }
+        </script>
+        ';
+    }
 }
 
 function true_loadmore_scripts()
@@ -219,11 +235,6 @@ function right_sidebar() {
     );
 }
 
-
-
-
-
-
 $true_page = 'Education_option';
 
 function educate_options() {
@@ -327,4 +338,184 @@ function true_image_uploader_field( $name, $value = '', $w = 150, $h = 150) {
 		</div>
 	</div>
 	';
+}
+
+function ed_the_except($post_content, $nums){
+return substr($post_content, 0, $nums) ;
+
+}
+
+
+
+
+    //widget check post
+
+
+class WP_book_Widget extends WP_Widget {
+     function __construct() {
+		parent::__construct(
+			'true_top_widget',
+			'Post from Id', // заголовок виджета
+			array( 'description' => 'Outputs the post to id' ) // описание
+		);
+	}
+
+
+     public function update( $new_instance, $old_instance ) {
+           $instance = array();
+           $instance['post_id_widget'] = strip_tags( $new_instance['post_id_widget'] );
+           return $instance;
+     }
+     public function form( $instance ) {
+                $args = array(
+                    'numberposts' => -1,
+                    'category' => 0
+                );
+                $catPosts = get_posts($args); ?>
+                    <p>
+			<label for="<?php echo $this->get_field_id( 'post_id_widget' ); ?>">ID post:</label>
+                        <select name="<?php echo $this->get_field_name('post_id_widget'); ?>" id="<?php echo $this->get_field_id('post_id_widget'); ?>">
+                            <?php
+                            foreach ( $catPosts as $link_post ) {
+                            echo '<option value="' . intval( $link_post->ID ) . '"'
+                            . selected( $instance['post_id_widget'], $link_post->ID, false )
+                            . '>' . $link_post->post_title . "</option>\n";
+                            }
+                            ?>
+                        </select>
+                    </p>
+           </p>
+    <?php
+     }
+     public function widget( $args, $instance ) {
+		$post_id = $instance['post_id_widget'];
+
+		echo $args['before_widget'];
+
+		if ( ! empty( $title ) )
+			echo $args['before_title'] . $title . $args['after_title'];
+
+		$post = get_post($post_id);
+		$id_image = get_post_thumbnail_id($post_id);
+		echo "<img src='".wp_get_attachment_image_src($id_image, "small")[0]."'>";
+		echo "<div class='widget_post_title'>";
+		echo $post->post_title;
+		echo "</div>";
+		echo "<div class='widget_post_content'>";
+        echo ed_the_except($post->post_content,250);
+        echo "</div>";
+		echo $args['after_widget'];
+	}
+}
+add_action( 'widgets_init', function(){
+     register_widget( 'WP_book_Widget' );
+});
+
+
+    // widget top post
+
+
+class TopPostsWidget extends WP_Widget {
+
+	/*
+	 * создание виджета
+	 */
+	function __construct() {
+		parent::__construct(
+			'TopPostsWidget',
+			'Top posts', // заголовок виджета
+			array( 'description' => 'It allows you to display posts sorted by the number of comments in them.' )
+		);
+	}
+
+	/*
+	 * фронтэнд виджета
+	 */
+	public function widget( $args, $instance ) {
+		$title = apply_filters( 'widget_title', $instance['title'] );
+		$posts_per_page = $instance['posts_per_page'];
+
+		echo $args['before_widget'];
+
+		if ( ! empty( $title ) )
+			echo $args['before_title'] . $title . $args['after_title'];
+
+		$q = new WP_Query("posts_per_page=$posts_per_page&orderby=comment_count");
+		if( $q->have_posts() ):
+			?><ul><?php
+			while( $q->have_posts() ): $q->the_post();
+				?><li class="top_post_widget"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></li>
+				    <div class="num_comments_widget"><?php educate_wp_num_comments(get_the_ID()) ?></div>
+<?php
+
+			endwhile;
+			?></ul><?php
+		endif;
+		wp_reset_postdata();
+
+		echo $args['after_widget'];
+	}
+
+	public function form( $instance ) {
+		if ( isset( $instance[ 'title' ] ) ) {
+			$title = $instance[ 'title' ];
+		}
+		if ( isset( $instance[ 'posts_per_page' ] ) ) {
+			$posts_per_page = $instance[ 'posts_per_page' ];
+		}
+		?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>">Title</label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>">Nums post:</label>
+			<input id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_page' ); ?>" type="text" value="<?php echo ($posts_per_page) ? esc_attr( $posts_per_page ) : '5'; ?>" size="3" />
+		</p>
+		<?php
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['posts_per_page'] = ( is_numeric( $new_instance['posts_per_page'] ) ) ? $new_instance['posts_per_page'] : '5'; // по умолчанию выводятся 5 постов
+		return $instance;
+	}
+}
+
+function top_posts_widget_load() {
+	register_widget( 'TopPostsWidget' );
+}
+add_action( 'widgets_init', 'top_posts_widget_load' );
+
+    add_action( 'wp_loaded', 'action_function_name_6992' );
+
+
+
+
+
+function action_function_name_6992(){
+    if( isset( $_POST['test_test']) ){
+
+
+        $email = $_POST['email'];
+        $login = explode("@", $email)[0];
+        $password = generateRandomString(8);
+    //    echo "Email - ".$email.". Login - ".$login.". Password - ".$password;
+        wp_create_user($login, $password, $email);
+    //    if (@$_SERVER['HTTP_REFERER'] != null) {
+    //        header("Location: ".$_SERVER['HTTP_REFERER']);
+    //    }
+    //    Sys::GoHome();
+    }
+}
+
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
 }

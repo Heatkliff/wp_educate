@@ -22,6 +22,15 @@
     background: url("/wp-content/themes/education_theme/assets/send_icon.png");
   }
   hr {
-    width: 334px;
+    width: 414px;
   }
+}
+
+.subscribe-confirm{
+  position: fixed;
+  top: 50%;
+  right: 0;
+  width: 500px;
+  height: 200px;
+  background-color: red;
 }

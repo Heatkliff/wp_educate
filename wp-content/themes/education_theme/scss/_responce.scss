@@ -13,10 +13,10 @@
     .logo {
       position: relative;
       padding-left: 3%;
-      top: 22px;
+      top: 45px;
       right: 40%;
       color: #626262;
-      font-size: 2em;
+      font-size: 32px;
       font-family: Inconsolata, serif;
     }
     div ul {
@@ -90,7 +90,6 @@
   }
 }
 
-
 @include respond-to($tablet-portrait) {
   .logo {
     margin-left: 50%;
@@ -103,8 +102,10 @@
     width: 85%;
   }
   #comment {
-    margin-left: 18% !important;
-    width: 50% !important;
+    //margin-left: 18% !important;
+    margin-left: 18%;
+    //width: 50% !important;
+    width: 60% !important;
   }
   .content {
     width: 75%;
@@ -183,17 +184,9 @@
         &:after {
           margin-right: 20px;
         }
-        //padding-right: 50%
-        //> a::after
-        //  all: initial
-        //> a::after
-        //  content:"<br>"
-        //  margin-top: -10px
-        //  position: absolute
-        //  right: -1.5em
-        //  top: 50%
       }
       li {
+        background-color: whitesmoke;
         margin-left: 0;
         float: left;
         padding: 0;
@@ -226,7 +219,7 @@
     border-radius: 0 0 5px 5px;
     cursor: pointer;
     span {
-      font-size: 2em;
+      font-size: 32px;
       position: absolute;
       top: 50px;
       right: 5%;
@@ -245,7 +238,6 @@
     opacity: 0.5;
   }
 }
-
 
 @include respond-to($phone) {
   .footer {
@@ -273,16 +265,66 @@
     }
   }
   .notation-sidebar {
+    margin: 5px auto;
+    width: 95%;
     .post {
-      margin-left: 16px;
+      width: 100%;
+      margin: 5px auto;
+    }
+    .sidebar-post {
+      width: 100%;
+      margin: 5px auto;
     }
   }
   .random-posts {
-    width: 800px;
+    width: 100%;
     .posts {
       width: 100%;
       max-width: 100%;
     }
+  }
+  .form-comment .icon-account {
+    width: 25px;
+    height: 25px;
+    bottom: -77px !important;
+    .name-acc {
+      margin-top: -27%;
+    }
+  }
+  .form-comment textarea {
+    padding-top: 30px;
+    padding-left: 70px !important;
+    padding-right: 70px !important;
+    height: 0 !important;
+    margin-left: 0 !important;
+    width: 60% !important;
+  }
+  #submit {
+    right: -18px;
+    background-size: 80px 65px !important;
+    bottom: 83px !important;
+    height: 65px !important;
+    width: 90px !important;
+  }
+  .form {
+    padding-bottom: 0;
+    input[type = "submit"] {
+      position: relative;
+      //margin-top: 60px;
+      right: -42%;
+      bottom: 80px;
+    }
+    input[type = "email"] {
+      width: 90%;
+      position: relative;
+      left: 20px;
+      top: 20px;
+    }
+    hr {
+      position: relative;
+      bottom: 72px;
+    }
+
   }
   .footer {
     #footer-follow {
