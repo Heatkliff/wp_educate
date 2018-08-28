@@ -26,11 +26,14 @@
   }
 }
 
-.subscribe-confirm{
+#subscribe-confirm{
   position: fixed;
   top: 50%;
-  right: 0;
+  right: 40%;
   width: 500px;
-  height: 200px;
-  background-color: red;
+  height: 100px;
+  border-radius: 5%;
+  background-color: #f0f0f0;
+  padding-top: 60px;
+  font-size: 32px;
 }

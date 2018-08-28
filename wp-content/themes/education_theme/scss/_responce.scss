@@ -31,7 +31,7 @@
   }
   #comment {
     margin-left: 18% !important;
-    width: 50% !important;
+    width: 60% !important;
   }
   .content {
     width: 75%;
@@ -91,6 +91,19 @@
 }
 
 @include respond-to($tablet-portrait) {
+  .comments-in-post #respond textarea {
+    height: 30px!important;
+  }
+  .comments-in-post #submit{
+    height: 70px!important;
+    background-size: 90px 70px!important;
+    bottom: 94px!important;
+  }
+  #subscribe-confirm{
+    width: 100%;
+    top: 0;
+    right: 0;
+  }
   .logo {
     margin-left: 50%;
     top: 0 !important;
@@ -104,8 +117,10 @@
   #comment {
     //margin-left: 18% !important;
     margin-left: 18%;
-    //width: 50% !important;
-    width: 60% !important;
+    padding-left: 0;
+    padding-top: 8px!important;
+    width: 50%;
+    height: 25px!important;
   }
   .content {
     width: 75%;
@@ -240,6 +255,23 @@
 }
 
 @include respond-to($phone) {
+  .comments-in-post .one-comment .comment-post {
+    width: 68%;
+  }
+  #subscribe-form{
+    padding-bottom: 10px;
+    input{
+      position: inherit;
+    }
+    hr{
+      width: 95%;
+      position: inherit;
+    }
+  }
+  #subscribe-confirm{
+    top: 0;
+    right: 20%;
+  }
   .footer {
     min-height: 160px;
     float: none;
@@ -300,7 +332,7 @@
     width: 60% !important;
   }
   #submit {
-    right: -18px;
+    right: -24px;
     background-size: 80px 65px !important;
     bottom: 83px !important;
     height: 65px !important;
@@ -309,19 +341,20 @@
   .form {
     padding-bottom: 0;
     input[type = "submit"] {
-      position: relative;
+      //position: relative;
       //margin-top: 60px;
       right: -42%;
       bottom: 80px;
     }
     input[type = "email"] {
-      width: 90%;
-      position: relative;
+      width: 85%;
+
+      //position: relative;
       left: 20px;
       top: 20px;
     }
     hr {
-      position: relative;
+      //position: relative;
       bottom: 72px;
     }
 

@@ -19,7 +19,7 @@ function get_form_home()
 
 
     if( isset( $_POST['test_test']) ){
-        echo '<div id="subscribe-confirm" style="position: fixed; top: 50%;right: 0;width: 500px;height: 200px;background-color: red;">Hello!</div>
+        echo '<div id="subscribe-confirm">Subscribe confirm!</div>
 
         <script>
         document.addEventListener("DOMContentLoaded", ready);
